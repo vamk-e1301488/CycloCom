@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Sample Category"
+            id="cyclomaticComplexity.commands.category">
+      </category>
+      <command
+            name="Cyclomatic Complexity"
+            categoryId="cyclomaticComplexity.commands.category"
+            id="cyclomaticComplexity.commands.sampleCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="cyclomaticComplexity.commands.sampleCommand"
+            class="cyclomaticcomplexity.handlers.mainHandler">
+         <activeWhen>
+	         <with variable="activeEditor">
+	         <instanceof value="org.eclipse.ui.texteditor.ITextEditor"/>
+	    	 </with>
+         </activeWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="cyclomaticComplexity.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+     
+      
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="cyclomaticComplexity.toolbars.sampleToolbar">
+            <command
+                  commandId="cyclomaticComplexity.commands.sampleCommand"
+                  icon="icons/ico.png"
+                  tooltip="Cyclomatic Complexity"
+                  id="cyclomaticComplexity.toolbars.sampleCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+      
+   </extension>
+
+</plugin>
