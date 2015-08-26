@@ -32,8 +32,8 @@ public class mydialog extends Dialog {
 	    if(complexity<20)
 	    {
 		    /*
-		     * if the complexity is low,set green image
-		     */
+		    * if the complexity is low,set green image
+		    */
 	    	lab.setImage(loadImage("icons/green.png",true));
 	    }
 	    else if(complexity>=21&&complexity<50)
@@ -53,7 +53,6 @@ public class mydialog extends Dialog {
 
 	    Label lab2 = new Label(container, SWT.PUSH);
 	    lab2.setText("Your code's complexity is: "+String.valueOf(complexity));
-
 	    
 	    return container;
 	  }
@@ -66,7 +65,7 @@ public class mydialog extends Dialog {
 	  }
 	  
 	  /*
-	   * Method for loading image
+	   * Method for loading an image
 	   */
 	  public static Image loadImage(String path, boolean inJar)
 		{

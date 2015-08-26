@@ -29,8 +29,7 @@ public class mainHandler extends AbstractHandler
 	public mainHandler() 
 	{
 
-	}
-	
+	}	
 
 	/**
 	 * the command has been executed, so extract extract the needed information
@@ -46,37 +45,36 @@ public class mainHandler extends AbstractHandler
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
         ISelection iSelection = null;
         IEditorSite iEditorSite = window.getActivePage().getActiveEditor().getEditorSite();
+        
         if (iEditorSite != null) 
         {
             ISelectionProvider iSelectionProvider = iEditorSite.getSelectionProvider();
             if (iSelectionProvider != null)
-            {
-            	
+            {    	
                 iSelection = iSelectionProvider.getSelection();
                 if(!iSelection.isEmpty())
-                {
-                	
-                
-                try{
-                	String selectedText = ((TextSelection)iSelection).getText();
-                    
-                    /*
-                     * We set the default image of MessageDialog objects
-                     * we will create an instance of a custom dialog,to display
-                     * our complexity as a dialog box.
-                     * The constructor accepts the current window shell,and the 
-                     * calculated cyclomatic complexity of the selectedText,as an integer
-                     */
-                    MessageDialog.setDefaultImage(loadImage("icons/sample.gif",true));                 
-                    mydialog dial=new mydialog(window.getShell(),cycloComp(selectedText));
-                    dial.open();
-                	
-                }catch(Exception e)
-                {
-                	MessageDialog.openError(window.getShell(), "Error",e.getMessage());
-                }
-                }
-                
+                {   
+	                try
+	                {
+	                	String selectedText = ((TextSelection)iSelection).getText();
+	                    
+	                    /*
+	                     * We set the default image of MessageDialog objects
+	                     * we will create an instance of a custom dialog,to display
+	                     * our complexity as a dialog box.
+	                     * The constructor accepts the current window shell,and the 
+	                     * calculated cyclomatic complexity of the selectedText,as an integer
+	                     */
+	                    MessageDialog.setDefaultImage(loadImage("icons/sample.gif",true));                 
+	                    mydialog dial=new mydialog(window.getShell(),cycloComp(selectedText));
+	                    dial.open();
+	                	
+	                }
+	                catch(Exception e)
+	                {
+	                	MessageDialog.openError(window.getShell(), "Error",e.getMessage());
+	                }
+                }  
              }
           }
 		
@@ -175,7 +173,7 @@ public class mainHandler extends AbstractHandler
 	public static Image loadImage(String path, boolean inJar)
 	{
 	    Image newImage = null;
-
+	    
 	    try
 	    {
 	        if(inJar)
