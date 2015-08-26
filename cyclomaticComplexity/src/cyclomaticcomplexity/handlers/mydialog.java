@@ -28,19 +28,26 @@ public class mydialog extends Dialog {
         layout.wrap = false;
         container.setLayout(layout);
 	    Label lab = new Label(container, SWT.PUSH);
-	    /*
-	     * if the complexity is low,set green image
-	     */
+
 	    if(complexity<20)
 	    {
+		    /*
+		     * if the complexity is low,set green image
+		     */
 	    	lab.setImage(loadImage("icons/green.png",true));
 	    }
 	    else if(complexity>=21&&complexity<50)
 	    {
+	    	/*
+	    	 * if the complexity is medium,set yellow image
+	    	 */
 	    	lab.setImage(loadImage("icons/yellow.png",true));
 	    }
 	    else if(complexity>50)
 	    {
+	    	/*
+	    	 * if the complexity is high,set red image
+	    	 */
 	    	lab.setImage(loadImage("icons/red.png",true));
 	    }
 
@@ -50,11 +57,17 @@ public class mydialog extends Dialog {
 	    
 	    return container;
 	  }
+	  
 	  @Override
-	  protected void configureShell(Shell newShell) {
+	  protected void configureShell(Shell newShell) 
+	  {
 	    super.configureShell(newShell);
 	    newShell.setText("Cyclomatic complexity");
 	  }
+	  
+	  /*
+	   * Method for loading image
+	   */
 	  public static Image loadImage(String path, boolean inJar)
 		{
 		    Image newImage = null;
