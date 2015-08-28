@@ -89,6 +89,12 @@ public class mainHandler extends AbstractHandler
 	private int cycloComp(String toAnalyse)
 	{
 		/*
+		 * bugfix:delete all the strings,which might contain
+		 * words similar to control flow:char x[]="if(..)";
+		 */
+		toAnalyse=toAnalyse.replaceAll("\"(.*)\"", ""); 
+
+		/*
 		 * "complexityCounter" will be incremented each time a control flow
 		 * statement is being met."lines" is a string array which stores each
 		 * individual line of code.
